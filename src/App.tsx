@@ -8,7 +8,7 @@ function App(): JSX.Element {
     <div className="App">
       <header className="App-header">
         <img alt="logo" className="App-logo" src={logo} />
-        <p>Dev Mentor.</p>
+        <p>Dev Mentor. Gain real developer experience</p>
         <a className="App-link" href="https://reactjs.org" rel="noopener noreferrer" target="_blank">
           Learn React
         </a>
