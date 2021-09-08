@@ -22,7 +22,7 @@ function App(): JSX.Element {
     <div className="App">
       <header className="App-header">
         <img alt="logo" className="App-logo" src={logo} />
-        <p>Status: {status.message}</p>
+        <p>Status: {status && status.message}</p>
         <p>My Movies:</p>
         {posts &&
           posts.map((post: { title: string }, index: number) => {
