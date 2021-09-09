@@ -10,7 +10,7 @@ async function fetchPosts() {
 }
 
 async function fetchStatus() {
-  const { data } = await axios.get('https://api.movies.devmentor.online');
+  const { data } = await axios.get('https://api.movies.devmentor.online/prod');
   return data;
 }
 
