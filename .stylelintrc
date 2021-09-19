@@ -1,6 +1,7 @@
 {
     "extends": [
         "stylelint-config-recommended",
+        "stylelint-config-css-modules"
     ],
     "plugins": [
         "stylelint-order"
@@ -212,7 +213,4 @@
             "z-index"
         ]
     },
-    "ignoreFiles": [
-        "test/MockedProviders/MockedProviders.tsx"
-    ]
 }
