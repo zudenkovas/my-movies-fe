@@ -24,7 +24,7 @@ function App(): JSX.Element {
     <div className={styles.app}>
       <header className={styles.appHeader}>
         <LogoIcon />
-        <p>DevMentor My Movies</p>
+        <p>My Movies</p>
         {status && <p>Status: {status.message}</p>}
         {posts && (
           <ul>
