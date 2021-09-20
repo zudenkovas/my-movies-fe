@@ -5,19 +5,19 @@ import LogoIcon from './components/Icons/LogoIcon';
 import styles from './App.module.css';
 
 async function fetchStatus() {
-  const { data } = await axios.get('https://api.movies.devmentor.online/prod');
+  const { data } = await axios.get('http://localhost:3001/health');
   return data;
 }
 
 function App(): JSX.Element {
-  const { data: status } = useQuery('status', fetchStatus);
+  const { data: healthy } = useQuery('status', fetchStatus);
 
   return (
     <div className={styles.app}>
       <header className={styles.appHeader}>
         <LogoIcon />
         <p>My Movies</p>
-        {status && <p>Status: {status.message}</p>}
+        <p>API Status: {healthy ? 'Is running' : 'Something is wrong!'}</p>
       </header>
     </div>
   );
