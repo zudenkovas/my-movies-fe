@@ -1,4 +1,4 @@
-# My Movies Front END
+# My Movies Front End
 
 This project contains source code and supporting files for My Movies application Front End. It includes the following files and folders.
 
