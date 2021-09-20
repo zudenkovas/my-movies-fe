@@ -91,6 +91,7 @@
             "direction",
             "display",
             "empty-cells",
+            "fill",
             "filter",
             "flex",
             "flex-basis",
