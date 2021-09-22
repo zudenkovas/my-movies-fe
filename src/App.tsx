@@ -21,7 +21,7 @@ function App(): JSX.Element {
           Header
         </header>
       }
-      sidebar={<aside>Sidebar</aside>}
+      sidebar={<div>Sidebar</div>}
     >
       <p>My Movies</p>
       <p>API Status: {healthy ? 'Is running' : 'Something is wrong!'}</p>

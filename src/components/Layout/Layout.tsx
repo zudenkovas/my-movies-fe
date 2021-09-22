@@ -12,10 +12,10 @@ type LayoutProps = {
 const Layout = ({ children, header, footer, sidebar }: LayoutProps) => (
   <>
     {header}
-    <main className={styles.main}>
-      {sidebar}
-      {children}
-    </main>
+    <div className={styles.contentContainer}>
+      <div className={styles.sideBar}>{sidebar}</div>
+      <main>{children}</main>
+    </div>
     {footer}
   </>
 );
