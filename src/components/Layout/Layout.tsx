@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { parseMultipleClassNames } from 'utils/theme/styleUtils';
 
 import styles from './Layout.module.css';
 
@@ -11,12 +12,12 @@ type LayoutProps = {
 
 const Layout = ({ children, header, footer, sidebar }: LayoutProps) => (
   <>
-    {header}
-    <div className={styles.contentContainer}>
+    <div className={styles.contentMargin}>{header}</div>
+    <div className={parseMultipleClassNames([styles.contentMargin, styles.contentContainer])}>
       <div className={styles.sideBar}>{sidebar}</div>
       <main>{children}</main>
     </div>
-    {footer}
+    <div className={styles.contentMargin}>{footer}</div>
   </>
 );
 

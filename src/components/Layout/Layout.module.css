@@ -1,11 +1,15 @@
 .contentContainer {
     display: grid;
-    grid-template-columns: 20% 90%;
+    grid-template-columns: 20% 80%;
+    min-height: 90vh;
+}
+
+.contentMargin {
     margin: 0 50px;
 }
 
 
-@media screen and (max-width: 366px) {
+@media screen and (max-width: 767px) {
     .sideBar {
         display: none
     }
