@@ -1,0 +1,14 @@
+/* TODO: Update styles for HamburgerButton */
+
+.hamburgerButton {
+    display: none;
+}
+
+.bar {
+    background-color: #101010;
+    display: block;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    width: 25px;
+}
