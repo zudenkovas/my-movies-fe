@@ -4,7 +4,7 @@ import styles from './HamburgerButton.module.css';
 
 type HamburgerButtonProps = { onClick?: () => void };
 const HamburgerButton = ({ onClick }: HamburgerButtonProps) => {
-  // TODO: Update element to change kebab button state on click
+  // TODO: Update element to change hamburger button state on click
   const handleClick = () => {
     onClick?.();
   };
