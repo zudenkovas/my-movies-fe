@@ -1,6 +1,18 @@
+import LogoIcon from 'components/Icons/LogoIcon';
+import HamburgerButton from 'components/HamburgerButton';
+
+import styles from './Header.module.css';
+
 const Header = () => {
-  // TODO: Implement the Header According to AC
-  return <div></div>;
+  return (
+    <header className={styles.headerElement}>
+      <LogoIcon />
+      <span>My Movies</span>
+      <div>
+        <HamburgerButton />
+      </div>
+    </header>
+  );
 };
 
 export default Header;
