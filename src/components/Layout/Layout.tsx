@@ -12,10 +12,10 @@ type LayoutProps = {
 
 const Layout = ({ children, header, footer, sidebar }: LayoutProps) => (
   <>
-    <div className={styles.contentMargin}>{header}</div>
+    <div className={parseMultipleClassNames([styles.contentMargin, styles.stickyContainer])}>{header}</div>
     <div className={parseMultipleClassNames([styles.contentMargin, styles.contentContainer])}>
       <div className={styles.sideBar}>{sidebar}</div>
-      <main>{children}</main>
+      <main style={{ height: '700px' }}>{children}</main>
     </div>
     <div className={styles.contentMargin}>{footer}</div>
   </>
