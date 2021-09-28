@@ -1,16 +1,19 @@
+import { useState } from 'react';
 import { parseMultipleClassNames } from 'utils/theme/styleUtils';
 
 import styles from './HamburgerButton.module.css';
 
 type HamburgerButtonProps = { onClick?: () => void };
 const HamburgerButton = ({ onClick }: HamburgerButtonProps) => {
-  // TODO: Update element to change hamburger button state on click
+  const [isActive, setIsActive] = useState(false);
+
   const handleClick = () => {
     onClick?.();
+    setIsActive((prevState) => !prevState);
   };
 
   return (
-    <div className={parseMultipleClassNames([styles.hamburgerButton, styles.active])} onClick={handleClick}>
+    <div className={isActive ? parseMultipleClassNames([styles.hamburgerButton, styles.active]) : styles.hamburgerButton} onClick={handleClick}>
       <span className={styles.bar}></span>
       <span className={styles.bar}></span>
       <span className={styles.bar}></span>
