@@ -8,7 +8,7 @@ async function fetchStatus() {
   return data;
 }
 
-// TODO: Add footer to be shown
+// TODO: Add footer to the page
 function App(): JSX.Element {
   const { data: healthy } = useQuery('status', fetchStatus);
 
