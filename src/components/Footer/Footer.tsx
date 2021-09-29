@@ -1,5 +1,5 @@
-// TODO: Update component according to AC's
+import styles from './Footer.module.css';
 
-const Footer = () => <div>&copy; All rights reserved.</div>;
+const Footer = () => <footer className={styles.pageFooter}>&copy; All rights reserved.</footer>;
 
 export default Footer;

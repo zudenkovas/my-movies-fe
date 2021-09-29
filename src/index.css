@@ -13,5 +13,11 @@ code {
 }
 
 :root {
+  /* Colors */
+  --secondary: #61dafb;
+
+  /* Z Index'es */
   --zIndexHeader: 100;
+
+
 }

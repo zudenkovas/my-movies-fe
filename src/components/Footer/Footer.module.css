@@ -1,0 +1,7 @@
+/* TODO: Fix footer styles to match AC's */
+
+.pageFooter {
+    background-color: var(--secondary);
+    display: flex;
+    height: 40px;
+}
