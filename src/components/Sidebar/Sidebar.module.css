@@ -1,0 +1,17 @@
+.fixedSidebarWrapper {
+    left: 50px;
+    position: fixed;
+    top: 65px;
+    width: 200px;
+}
+
+.fixedSidebar {
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 140px);
+    padding: 10px;
+}
+

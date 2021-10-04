@@ -1,11 +1,13 @@
 .contentContainer {
+    background-color: var(--paper);
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-column-gap: 30px;
+    grid-template-columns: 200px auto;
     min-height: 90vh;
 }
 
 .contentMargin {
-    margin: 0 50px;
+    padding: 0 50px;
 }
 
 .stickyContainer {
