@@ -1,17 +1,26 @@
+import { useState } from 'react';
 import LogoIcon from 'components/Icons/LogoIcon';
 import HamburgerButton from 'components/HamburgerButton';
+import Sidebar from 'components/Sidebar';
 import useMediaQuery from 'hooks/useMediaQuery';
 
 import styles from './Header.module.css';
 
-// TODO: Update this component to
+// TODO: Fix this component to work properly
 
 const Header = () => {
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const handleButtonClick = () => {
+    setSidebarVisible((prevState) => !prevState);
+  };
+
+  const closeSidebar = () => {
+    setSidebarVisible(false);
+  };
+
   useMediaQuery({
-    matchQuery: '(min-width: 768px)',
-    matchCallback: () => {
-      return;
-    },
+    matchQuery: '(min-width: 400px)',
+    matchCallback: closeSidebar,
   });
 
   return (
@@ -19,8 +28,9 @@ const Header = () => {
       <LogoIcon />
       <span>My Movies</span>
       <div className={styles.hamburgerButtonWrapper}>
-        <HamburgerButton />
+        <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} />
       </div>
+      {sidebarVisible && <Sidebar onBackDropClick={closeSidebar} />}
     </header>
   );
 };
