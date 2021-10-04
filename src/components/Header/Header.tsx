@@ -6,8 +6,6 @@ import useMediaQuery from 'hooks/useMediaQuery';
 
 import styles from './Header.module.css';
 
-// TODO: Fix this component to work properly
-
 const Header = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const handleButtonClick = () => {
@@ -19,7 +17,7 @@ const Header = () => {
   };
 
   useMediaQuery({
-    matchQuery: '(min-width: 400px)',
+    matchQuery: '(min-width: 768px)',
     matchCallback: closeSidebar,
   });
 
@@ -30,7 +28,7 @@ const Header = () => {
       <div className={styles.hamburgerButtonWrapper}>
         <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} />
       </div>
-      {sidebarVisible && <Sidebar onBackDropClick={closeSidebar} />}
+      {sidebarVisible && <Sidebar isFixed={false} onBackDropClick={closeSidebar} />}
     </header>
   );
 };
