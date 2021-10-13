@@ -1,14 +1,10 @@
 import { useQuery } from 'react-query';
-import axios from 'axios';
+import { fetchStatus } from 'api/health';
 
 import LogoIcon from './components/Icons/LogoIcon';
 import styles from './App.module.css';
 
-async function fetchStatus() {
-  const { data } = await axios.get('http://localhost:3001/health');
-  return data;
-}
-
+console.log(process.env);
 function App(): JSX.Element {
   const { data: healthy } = useQuery('status', fetchStatus);
 
