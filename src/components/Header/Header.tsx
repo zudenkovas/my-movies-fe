@@ -1,10 +1,21 @@
 import { useState } from 'react';
+import { generatePath } from 'react-router-dom';
 import LogoIcon from 'components/Icons/LogoIcon';
 import HamburgerButton from 'components/HamburgerButton';
 import Sidebar from 'components/Sidebar';
+import { RouteKey } from 'containers/MainRouter';
 import useMediaQuery from 'hooks/useMediaQuery';
 
+import { HeaderNavigation } from './HeaderNavigation';
 import styles from './Header.module.css';
+
+const navigationConfig = [
+  { to: generatePath(RouteKey.Movies), name: 'Movies' },
+  {
+    to: generatePath(RouteKey.MyMovies),
+    name: 'My Movies',
+  },
+];
 
 const Header = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -16,7 +27,7 @@ const Header = () => {
     setSidebarVisible(false);
   };
 
-  useMediaQuery({
+  const { matches } = useMediaQuery({
     matchQuery: '(min-width: 768px)',
     matchCallback: closeSidebar,
   });
@@ -24,11 +35,20 @@ const Header = () => {
   return (
     <header className={styles.headerElement}>
       <LogoIcon />
-      <span>My Movies</span>
-      <div className={styles.hamburgerButtonWrapper}>
-        <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} />
-      </div>
-      {sidebarVisible && <Sidebar isFixed={false} onBackDropClick={closeSidebar} />}
+      {matches ? (
+        <HeaderNavigation listDirection="row" navigationConfig={navigationConfig} />
+      ) : (
+        <>
+          <div className={styles.hamburgerButtonWrapper}>
+            <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} />
+          </div>
+          {sidebarVisible && (
+            <Sidebar isFixed={false} onBackDropClick={closeSidebar}>
+              <HeaderNavigation listDirection="column" navigationConfig={navigationConfig} />
+            </Sidebar>
+          )}
+        </>
+      )}
     </header>
   );
 };

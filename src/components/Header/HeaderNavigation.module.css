@@ -1,0 +1,16 @@
+.isActive {
+    color: var(--secondary);
+}
+
+.unorderedList {
+   display: flex;
+   list-style: none;
+}
+
+.listItem {
+    margin: 15px 20px;
+}
+
+.rowAlign {
+   flex-direction: row;
+}

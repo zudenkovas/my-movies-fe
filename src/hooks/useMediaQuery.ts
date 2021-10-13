@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 type UseMediaQueryProps = {
   dependencies?: any;
@@ -6,17 +6,28 @@ type UseMediaQueryProps = {
   matchCallback: () => void;
 };
 
-const useMediaQuery = ({ matchQuery, matchCallback, dependencies = [] }: UseMediaQueryProps): void => {
+const useMediaQuery = ({ matchQuery, matchCallback, dependencies = [] }: UseMediaQueryProps): { matches: boolean } => {
+  const [matches, setMatches] = useState(false);
   useEffect(() => {
     const mediaQuery = window.matchMedia(matchQuery);
-    const closeSidebar = (event: MediaQueryListEvent) => {
+    const eventHandler = (event: MediaQueryListEvent) => {
       if (event.matches) {
         matchCallback();
+        setMatches(true);
+      } else {
+        setMatches(false);
       }
     };
-    mediaQuery.addEventListener('change', closeSidebar);
-    console.log(mediaQuery);
+    mediaQuery.addEventListener('change', eventHandler);
+
+    return () => {
+      mediaQuery.removeEventListener('change', eventHandler);
+    };
   }, [...dependencies]);
+
+  return {
+    matches,
+  };
 };
 
 export default useMediaQuery;
