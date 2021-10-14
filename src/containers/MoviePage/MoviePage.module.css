@@ -2,8 +2,8 @@
     background-position: right -200px top;
     background-repeat: no-repeat;
     background-size: cover;
-    max-width: 100%;
     margin: 0 -50px;
+    max-width: 100%;
     padding: 0 50px;
 }
 
@@ -22,7 +22,11 @@
 }
 
 .moviePosterWrapper {
+<<<<<<< HEAD
     max-width: 300px;;
+=======
+    max-width: 300px;
+>>>>>>> 287852c453f8a015f33aee216cb28a904f198b75
 }
 
 .moviePoster {

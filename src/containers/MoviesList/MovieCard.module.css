@@ -9,11 +9,11 @@
 
 .movieInfoWrapper {
     display: flex;
-    flex-grow: 2;
     flex-direction: column;
+    flex-grow: 2;
     justify-content: space-between;
     padding: 5px 10px;
-word-break: break-all;
+    word-break: break-all;
 }
 
 .movieInfoParagraph {

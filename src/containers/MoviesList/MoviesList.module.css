@@ -1,5 +1,5 @@
 .moviesListContainer {
     display: flex;
-    flex-flow: row wrap;;
+    flex-flow: row wrap;
     margin-top: 40px;
 }
