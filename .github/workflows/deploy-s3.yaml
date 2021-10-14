@@ -3,9 +3,6 @@ name: Deploy to S3 and invalidate CloudFront
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
-    types: [closed]
 jobs:
   deploy:
     runs-on: ubuntu-latest
