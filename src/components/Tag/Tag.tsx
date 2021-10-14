@@ -6,7 +6,7 @@ type TagProps = {
   children: ReactNode;
 };
 
-const Tag = ({ children }: TagProps) => {
+const Tag = ({ children }: TagProps): JSX.Element => {
   return <div className={styles.tag}>{children}</div>;
 };
 
