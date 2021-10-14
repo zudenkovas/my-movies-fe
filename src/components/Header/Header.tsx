@@ -17,7 +17,7 @@ const navigationConfig = [
   },
 ];
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const handleButtonClick = () => {
     setSidebarVisible((prevState) => !prevState);

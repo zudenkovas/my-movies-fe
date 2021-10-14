@@ -8,7 +8,7 @@ type SidebarProps = {
   children: ReactChild;
 };
 
-const Sidebar = ({ children, isFixed = true, onBackDropClick }: SidebarProps) => {
+const Sidebar = ({ children, isFixed = true, onBackDropClick }: SidebarProps): JSX.Element => {
   const onSidebarClick = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };

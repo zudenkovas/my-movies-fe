@@ -9,7 +9,7 @@ type LayoutProps = {
   footer: ReactNode;
 };
 
-const Layout = ({ children, header, footer }: LayoutProps) => (
+const Layout = ({ children, header, footer }: LayoutProps): JSX.Element => (
   <>
     <div className={parseMultipleClassNames([styles.contentMargin, styles.stickyContainer])}>{header}</div>
     <div className={styles.contentMargin}>
