@@ -5,7 +5,7 @@ import Loader from 'components/Loader';
 
 import styles from './MoviePage.module.css';
 
-export const MoviePage = () => {
+export const MoviePage = (): JSX.Element => {
   const location = useLocation();
   const params = useParams<{ id: string }>();
   const { data, isLoading } = useQuery('movie', () => getMovie(params.id));

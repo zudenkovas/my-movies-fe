@@ -5,7 +5,7 @@ import { RouteKey } from 'containers/MainRouter/routes';
 
 import styles from './MovieCard.module.css';
 
-const MovieCard = ({ posterPath, releaseDate, title, voteAverage, id }: Movie) => {
+const MovieCard = ({ posterPath, releaseDate, title, voteAverage, id }: Movie): JSX.Element => {
   const movieLink = generatePath(RouteKey.Movie, { id });
 
   return (
