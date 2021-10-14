@@ -1,6 +1,11 @@
 import { get } from './shared/methods';
 
-export async function fetchStatus() {
-  const { data } = await get<{ health: boolean; version: string }>('health');
+interface StatusInfo {
+  health: boolean;
+  version: string;
+}
+
+export async function fetchStatus(): Promise<StatusInfo> {
+  const { data } = await get<StatusInfo>('health');
   return data;
 }
