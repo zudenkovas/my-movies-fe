@@ -20,6 +20,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
         run: npm install
+      - name: Write .env file
+        run: npm run-script write-env-vars ${{ secrets.API_URL }}
       - name: Build Application
         run: npm run-script build
       - uses: jakejarvis/s3-sync-action@master
