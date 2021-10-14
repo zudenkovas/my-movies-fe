@@ -46,7 +46,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "write-env-vars": "node -e \"require('fs').writeFileSync('./.env', 'REACT_APP_API_URL=' + process.argv[1] + '\\n');\"",
+    "types-check": "tsc",
+    "lint": "npm run lint:ts && npm run lint:styles",
+    "lint:ts": "eslint \"./**/*.{ts,tsx}\" --format stylish --fix --quiet",
+    "lint:styles": "stylelint \"./**/*.css\""
   },
   "eslintConfig": {
     "extends": [
@@ -68,7 +73,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "tsc && lint-staged",
       "post-applypatch": "check-dependencies --install",
       "post-merge": "check-dependencies --install"
     }
