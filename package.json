@@ -1,4 +1,4 @@
-{
+ {
   "name": "my-movies-fe",
   "version": "0.1.0",
   "private": true,
@@ -81,7 +81,7 @@
   "lint-staged": {
     "*.{tsx,ts}": [
       "eslint --format stylish --fix --quiet",
-      "stylelint **/*.css",
+      "stylelint --ignore-path **/*.css",
       "prettier --write",
       "git add"
     ]

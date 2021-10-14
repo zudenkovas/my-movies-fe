@@ -14,7 +14,8 @@
 }
 
 .movieInfoWrapper {
-    padding: 40px 0
+    height: 100vh;
+    padding: 40px 0;
 }
 
 .movieSection {
@@ -22,7 +23,7 @@
 }
 
 .moviePosterWrapper {
-    max-width: 300px;;
+    max-width: 300px;
 }
 
 .moviePoster {
@@ -31,4 +32,46 @@
 
 .movieDataWrapper {
     padding-left: 30px;
+}
+
+.movieDataHeader {
+    display: flex;
+    flex-direction: column;
+    text-align: baseline;
+}
+
+.movieDataHeader h2 {
+    margin: 0 10px 0 0;
+}
+
+.movieDataHeaderDate {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.tagList {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.durationContainer {
+
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.voteContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.overviewContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    margin-top: 30px;
 }
