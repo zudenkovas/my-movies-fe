@@ -1,0 +1,41 @@
+.movieCardWrapper {
+    border: 1px solid var(--grey);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 30px 0;
+    max-width: 200px;
+}
+
+.movieInfoWrapper {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 10px;
+word-break: break-all;
+}
+
+.movieInfoParagraph {
+    margin: 0 0 auto 0;
+}
+
+.movieImage {
+    width: 100%;
+}
+
+.ratingIcon {
+    fill: var(--ripeLemon);
+    height: 15px;
+    margin-right: 10px;
+    width: 15px;
+}
+
+.voteAverage {
+    font-weight: bold;
+}
+
+.filmTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

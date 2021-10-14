@@ -1,14 +1,14 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, ReactChild } from 'react';
 
-import SidebarNavElement from './SidebarNavElement/SidebarNavElement';
 import styles from './Sidebar.module.css';
 
 type SidebarProps = {
   isFixed?: boolean;
   onBackDropClick?: () => void;
+  children: ReactChild;
 };
 
-const Sidebar = ({ isFixed = true, onBackDropClick }: SidebarProps) => {
+const Sidebar = ({ children, isFixed = true, onBackDropClick }: SidebarProps) => {
   const onSidebarClick = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
@@ -16,8 +16,7 @@ const Sidebar = ({ isFixed = true, onBackDropClick }: SidebarProps) => {
   return (
     <div className={isFixed ? styles.fixedSidebarWrapper : styles.takeOverSidebarWrapper} onClick={onBackDropClick}>
       <div className={isFixed ? styles.fixedSidebar : styles.takeOverSidebar} onClick={onSidebarClick}>
-        <SidebarNavElement text="1st link" />
-        <SidebarNavElement text="2nd link" />
+        {children}
       </div>
     </div>
   );
