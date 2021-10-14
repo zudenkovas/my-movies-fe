@@ -4,7 +4,6 @@ import { fetchStatus } from 'api/health';
 import LogoIcon from './components/Icons/LogoIcon';
 import styles from './App.module.css';
 
-console.log(process.env);
 function App(): JSX.Element {
   const { data: healthy } = useQuery('status', fetchStatus);
 
