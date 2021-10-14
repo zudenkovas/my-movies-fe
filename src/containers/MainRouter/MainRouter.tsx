@@ -5,7 +5,7 @@ import MyMoviesList from 'containers/MyMoviesList';
 
 import { RouteKey } from '.';
 
-export const MainRouter = () => (
+export const MainRouter = (): JSX.Element => (
   <Switch>
     <Route component={MyMoviesList} path={RouteKey.MyMovies} />
     <Route component={MoviePage} path={RouteKey.Movie} />
