@@ -1,0 +1,9 @@
+.sidebarNavElement {
+    color: inherit;
+    margin: 5px 10px;
+    text-decoration: none;
+}
+
+.sidebarNavElement:hover {
+    color: var(--secondary);
+}

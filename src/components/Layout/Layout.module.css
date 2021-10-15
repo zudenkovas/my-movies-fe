@@ -1,0 +1,10 @@
+.contentMargin {
+    padding: 0 50px;
+}
+
+.stickyContainer {
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: var(--zIndexHeader);
+}

@@ -1,0 +1,26 @@
+.hamburgerButton {
+    cursor: pointer;
+    display: block;
+    width: 25px;
+}
+
+.bar {
+    background-color: #101010;
+    display: block;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    width: 25px;
+}
+
+.hamburgerButton.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburgerButton.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburgerButton.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
