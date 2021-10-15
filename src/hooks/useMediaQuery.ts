@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 
 type UseMediaQueryProps = {
-  dependencies?: any;
   matchQuery: string;
   matchCallback: () => void;
 };
 
-const useMediaQuery = ({ matchQuery, matchCallback, dependencies = [] }: UseMediaQueryProps): { matches: boolean } => {
+const useMediaQuery = ({ matchQuery, matchCallback }: UseMediaQueryProps): { matches: boolean } => {
   const [matches, setMatches] = useState(false);
   useEffect(() => {
     const mediaQuery = window.matchMedia(matchQuery);
@@ -23,7 +22,7 @@ const useMediaQuery = ({ matchQuery, matchCallback, dependencies = [] }: UseMedi
     return () => {
       mediaQuery.removeEventListener('change', eventHandler);
     };
-  }, [...dependencies]);
+  }, []);
 
   return {
     matches,
