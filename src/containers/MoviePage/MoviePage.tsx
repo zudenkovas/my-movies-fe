@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getMovie } from 'api/movies/moviesLib';
 import Loader from 'components/Loader';
@@ -7,15 +7,12 @@ import Tag from 'components/Tag';
 import styles from './MoviePage.module.css';
 
 export const MoviePage = (): JSX.Element => {
-  const location = useLocation();
   const params = useParams<{ id: string }>();
   const { data, isLoading } = useQuery('movie', () => getMovie(params.id));
 
   if (isLoading && !data) {
     <Loader />;
   }
-
-  console.log(location, params, data);
 
   return (
     <div className={styles.backdropImage} style={{ backgroundImage: `url(${data?.backdropPath})` }}>
