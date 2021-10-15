@@ -5,9 +5,7 @@ import MovieCard from './MovieCard';
 import styles from './MoviesList.module.css';
 
 const MoviesListContainer = (): JSX.Element => {
-  const { data, isLoading, error } = useQuery('movies', getMovies);
-
-  console.log(isLoading, error);
+  const { data } = useQuery('movies', getMovies);
 
   return (
     <div className={styles.moviesListContainer}>
