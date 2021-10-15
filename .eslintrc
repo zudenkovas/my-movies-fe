@@ -95,7 +95,7 @@
         "reservedFirst": false,
         "shorthandFirst": false,
         "shorthandLast": true
-      }
+      },
     ],
     "react/jsx-uses-react": "off",
     "react/prop-types": "off",
@@ -103,6 +103,7 @@
     "react-hooks/exhaustive-deps": "off",
     "react-hooks/rules-of-hooks": "error",
     "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/naming-convention": [
       "error",
       {

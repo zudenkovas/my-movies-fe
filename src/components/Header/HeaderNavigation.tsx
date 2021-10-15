@@ -13,7 +13,7 @@ type NavigationConfig = {
   name: string;
 };
 
-export const HeaderNavigation = ({ navigationConfig, listDirection }: HeaderNavigationProps) =>
+export const HeaderNavigation = ({ navigationConfig, listDirection }: HeaderNavigationProps): JSX.Element | null =>
   navigationConfig.length ? (
     <nav>
       <ul className={listDirection === 'row' ? parseMultipleClassNames([styles.unorderedList, styles.rowAlign]) : styles.unorderedList}>
