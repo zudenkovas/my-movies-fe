@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { generatePath } from 'react-router-dom';
+import { generatePath, NavLink } from 'react-router-dom';
 import LogoIcon from 'components/Icons/LogoIcon';
 import HamburgerButton from 'components/HamburgerButton';
 import Sidebar from 'components/Sidebar';
@@ -34,7 +34,9 @@ const Header = (): JSX.Element => {
 
   return (
     <header className={styles.headerElement}>
-      <LogoIcon />
+      <NavLink to={RouteKey.Index}>
+        <LogoIcon />
+      </NavLink>
       {matches ? (
         <HeaderNavigation listDirection="row" navigationConfig={navigationConfig} />
       ) : (
