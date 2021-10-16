@@ -1,6 +1,27 @@
 .moviesListContainer {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
     margin-top: 40px;
 }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { .moviesListContainer {
+    grid-template-columns: repeat(2, 1fr);
+}}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { .moviesListContainer {
+    grid-template-columns: repeat(3, 1fr);
+}}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { .moviesListContainer {
+    grid-template-columns: repeat(5, 1fr);
+}}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { .moviesListContainer {
+    grid-template-columns: repeat(6, 1fr);
+} }
+
