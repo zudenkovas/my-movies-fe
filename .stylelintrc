@@ -1,4 +1,5 @@
 {
+    "ignoreFiles": ["build/**/*.css"],
     "extends": [
         "stylelint-config-recommended",
         "stylelint-config-css-modules"

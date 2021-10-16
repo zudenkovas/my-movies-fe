@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { fetchStatus } from 'api/health';
+import { MyMoviesLogo } from 'components/Icons';
 
-import LogoIcon from './components/Icons/LogoIcon';
 import styles from './App.module.css';
 
 function App(): JSX.Element {
@@ -10,7 +10,7 @@ function App(): JSX.Element {
   return (
     <div className={styles.app}>
       <header className={styles.appHeader}>
-        <LogoIcon />
+        <MyMoviesLogo className={styles.icon} />
         <p>My Movies</p>
         <p>API Status: {healthy ? 'Is running' : 'Something is wrong!'}</p>
       </header>
