@@ -23,7 +23,7 @@
 }
 
 .moviePosterWrapper {
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .moviePoster {
@@ -44,6 +44,14 @@
     margin: 0 10px 0 0;
 }
 
+.movieDataHeader > h3 {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    margin:5px 0 0;
+
+}
+
 .movieDataHeaderDate {
     font-size: 14px;
     font-weight: 400;
@@ -56,22 +64,43 @@
     margin-top: 10px;
 }
 
-.durationContainer {
-
+.dataList {
+    display: flex;
+    flex-direction: column;
     font-size: 14px;
-    margin-top: 10px;
+    margin: 10px 0 0;
 }
 
-.voteContainer {
+.dataList > span {
+    align-items: center;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.dataList > span > dt {
+   margin-right: 5px;
+}
+
+.dataList > span > dd {
+    margin: 0;
+ }
+
+.descriptionContainer {
     display: flex;
     flex-direction: column;
     font-size: 14px;
     margin-top: 10px;
 }
 
-.overviewContainer {
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    margin-top: 30px;
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .movieSection {
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .movieDataWrapper {
+        padding: 20px 0 0;
+    }
 }

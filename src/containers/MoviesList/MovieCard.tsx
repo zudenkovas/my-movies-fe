@@ -11,7 +11,7 @@ const MovieCard = ({ posterPath, releaseDate, title, voteAverage, movieId }: Mov
   return (
     <div className={styles.movieCardWrapper}>
       <Link to={movieLink}>
-        <img alt={`${title}-movie-poster`} className={styles.movieImage} src={posterPath} />
+        <img alt={`${title}-movie-poster`} className={styles.movieImage} loading="lazy" src={posterPath} />
       </Link>
       <div className={styles.movieInfoWrapper}>
         <div>

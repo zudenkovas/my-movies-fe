@@ -6,11 +6,13 @@ import Tag from 'components/Tag';
 
 import styles from './MoviePage.module.css';
 
+const formatToUsd = (number?: number): string | 0 | undefined => number && Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
+
 export const MoviePage = (): JSX.Element => {
   const params = useParams<{ id: string }>();
-  const { data, isLoading } = useQuery('movie', () => getMovie(params.id));
+  const { data, isLoading, isFetching } = useQuery('movie', () => getMovie(params.id));
 
-  if (isLoading && !data) {
+  if (isLoading || isFetching) {
     <Loader />;
   }
 
@@ -28,6 +30,7 @@ export const MoviePage = (): JSX.Element => {
                 <h2>
                   {data?.title} <span className={styles.movieDataHeaderDate}>{`(${data?.releaseDate})`}</span>
                 </h2>
+                <h3>{data?.tagline}</h3>
 
                 <div className={styles.tagList}>
                   {data?.genres.map(({ id, name }) => (
@@ -37,25 +40,45 @@ export const MoviePage = (): JSX.Element => {
                   ))}
                 </div>
 
-                <div className={styles.durationContainer}>
-                  <span>Duration: </span> <strong>{data?.runtime} min</strong>
-                </div>
-
-                <div className={styles.voteContainer}>
+                <dl className={styles.dataList}>
                   <span>
-                    Vote average: <strong>{data?.voteAverage} </strong>
+                    <dt>Duration:</dt>
+                    <dd>
+                      <strong>{data?.runtime} min</strong>
+                    </dd>
                   </span>
                   <span>
-                    Vote count: <strong>{data?.voteCount}</strong>
+                    <dt>Vote average:</dt>
+                    <dd>
+                      <strong>{data?.voteAverage} </strong>
+                    </dd>
                   </span>
-                </div>
+                  <span>
+                    <dt>Vote count:</dt>
+                    <dd>
+                      <strong>{data?.voteCount}</strong>
+                    </dd>
+                  </span>
+                  <span>
+                    <dt>Budget:</dt>
+                    <dd>
+                      <strong>{formatToUsd(data?.budget)}</strong>
+                    </dd>
+                  </span>
+                  <span>
+                    <dt>Revenue:</dt>
+                    <dd>
+                      <strong>{formatToUsd(data?.revenue)}</strong>
+                    </dd>
+                  </span>
+                </dl>
 
-                <div className={styles.overviewContainer}>
+                <div className={styles.descriptionContainer}>
                   <h3>Overview</h3>
                   <span>{data?.overview}</span>
                 </div>
 
-                <div className={styles.overviewContainer}>
+                <div className={styles.descriptionContainer}>
                   <h3>Production Companies</h3>
                   <span>{data?.productionCompanies.map((company) => company.name).join(', ')}</span>
                 </div>
@@ -64,8 +87,6 @@ export const MoviePage = (): JSX.Element => {
           </section>
         </div>
       </div>
-
-      {/* <img className={styles.backdropImage} src={data?.backdropPath} /> */}
     </div>
   );
 };
