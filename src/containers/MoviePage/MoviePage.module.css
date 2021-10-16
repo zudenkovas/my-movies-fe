@@ -14,7 +14,7 @@
 }
 
 .movieInfoWrapper {
-    height: 100vh;
+    min-height: 100vh;
     padding: 40px 0;
 }
 
@@ -24,6 +24,7 @@
 
 .moviePosterWrapper {
     max-width: 400px;
+    min-width: 300px;
 }
 
 .moviePoster {
