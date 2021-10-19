@@ -1,43 +1,47 @@
-// import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, generatePath, useLocation } from 'react-router-dom';
 import LogoIcon from 'components/Icons/LogoIcon';
-// import HamburgerButton from 'components/HamburgerButton';
-// import Sidebar from 'components/Sidebar';
+import HamburgerButton from 'components/HamburgerButton';
+import Sidebar from 'components/Sidebar';
 import { RouteKey } from 'containers/MainRouter';
-// import useMediaQuery from 'hooks/useMediaQuery';
+import useMediaQuery from 'hooks/useMediaQuery';
 
-// import { HeaderNavigation } from './HeaderNavigation';
+import { HeaderNavigation } from './HeaderNavigation';
 import styles from './Header.module.css';
 
-// const navigationConfig = [
-//   { to: generatePath(RouteKey.Movies), name: 'Movies' },
-//   {
-//     to: generatePath(RouteKey.MyMovies),
-//     name: 'My Movies',
-//   },
-// ];
+const navigationConfig = [{ to: generatePath(RouteKey.Movies), name: 'Movies' }];
 
 const Header = (): JSX.Element => {
-  // const [sidebarVisible, setSidebarVisible] = useState(false);
-  // const handleButtonClick = () => {
-  //   setSidebarVisible((prevState) => !prevState);
-  // };
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const location = useLocation();
+  const { matches } = useMediaQuery({
+    matchQuery: '(min-width: 768px)',
+  });
 
-  // const closeSidebar = () => {
-  //   setSidebarVisible(false);
-  // };
+  useEffect(() => {
+    if (!matches) {
+      setSidebarVisible(false);
+    }
+  }, [matches]);
 
-  // const { matches } = useMediaQuery({
-  //   matchQuery: '(min-width: 768px)',
-  //   matchCallback: closeSidebar,
-  // });
+  useEffect(() => {
+    setSidebarVisible(false);
+  }, [location]);
+
+  const handleButtonClick = () => {
+    setSidebarVisible((prevState) => !prevState);
+  };
+
+  const closeSidebar = () => {
+    setSidebarVisible(false);
+  };
 
   return (
     <header className={styles.headerElement}>
       <NavLink to={RouteKey.Index}>
         <LogoIcon />
       </NavLink>
-      {/* {matches ? (
+      {matches ? (
         <HeaderNavigation listDirection="row" navigationConfig={navigationConfig} />
       ) : (
         <>
@@ -45,12 +49,12 @@ const Header = (): JSX.Element => {
             <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} />
           </div>
           {sidebarVisible && (
-            <Sidebar isFixed={false} onBackDropClick={closeSidebar}>
+            <Sidebar onBackDropClick={closeSidebar}>
               <HeaderNavigation listDirection="column" navigationConfig={navigationConfig} />
             </Sidebar>
           )}
         </>
-      )} */}
+      )}
     </header>
   );
 };
