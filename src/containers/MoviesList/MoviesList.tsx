@@ -16,7 +16,19 @@ const MoviesListContainer = (): JSX.Element => {
   if (isLoading || isFetching) {
     return <Loader />;
   }
-  console.log(activePage);
+
+  const handleNextClick = () => {
+    setActivePage((page: number) => (page === totalPages ? page : page + 1));
+  };
+
+  const handlePrevClick = () => {
+    setActivePage((page: number) => (page === 1 ? page : page - 1));
+  };
+
+  const handlePageClick = (page: number) => {
+    setActivePage(page);
+  };
+
   return (
     <>
       <div className={styles.moviesListContainer}>
@@ -24,21 +36,7 @@ const MoviesListContainer = (): JSX.Element => {
           <MovieCard {...movie} key={movie.id} />
         ))}
       </div>
-      <Pagination
-        currentPage={activePage}
-        totalPages={totalPages}
-        onNextClick={() => {
-          setActivePage((page: number) => (page === totalPages ? page : page + 1));
-          console.log(`next page`);
-        }}
-        onPageClick={(page: number) => {
-          setActivePage(page);
-          console.log(`page click `);
-        }}
-        onPrevClick={() => {
-          setActivePage((page: number) => (page === 1 ? page : page - 1));
-        }}
-      />
+      <Pagination currentPage={activePage} totalPages={totalPages} onNextClick={handleNextClick} onPageClick={handlePageClick} onPrevClick={handlePrevClick} />
     </>
   );
 };
