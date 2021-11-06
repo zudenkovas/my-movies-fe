@@ -12,7 +12,7 @@ export type MovieListFilterFormValues = {
   title: string;
 };
 
-const MovieListFilter = ({ onFilterSubmit }: MovieListFilterProps) => {
+const MovieListFilter = ({ onFilterSubmit }: MovieListFilterProps): JSX.Element => {
   const initialValues: MovieListFilterFormValues = {
     title: '',
   };
