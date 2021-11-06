@@ -54,3 +54,7 @@ type SpokenLanguage = {
   iso: string;
   name: string;
 };
+
+export type MovieFilter = {
+  title: string;
+};
