@@ -6,10 +6,12 @@ import Pagination from 'components/Pagination';
 
 import MovieCard from './MovieCard';
 import styles from './MoviesList.module.css';
+import MovieListFilter, { MovieListFilterFormValues } from './MovieListFilter';
 
 const MoviesListContainer = (): JSX.Element => {
   const [activePage, setActivePage] = useState(1);
-  const { data, isLoading, isFetching } = useQuery(['movies', activePage], () => getMovies(activePage));
+  const [movieFilter, setMovieFilter] = useState({ title: '' });
+  const { data, isLoading, isFetching } = useQuery(['movies', activePage, movieFilter], () => getMovies(activePage, movieFilter));
 
   const totalPages = data?.totalPages || 0;
 
@@ -29,11 +31,16 @@ const MoviesListContainer = (): JSX.Element => {
     setActivePage(page);
   };
 
+  const handleMovieListFilter = (values: MovieListFilterFormValues) => {
+    setMovieFilter(values);
+  };
+
   return (
     <>
+      <MovieListFilter onFilterSubmit={handleMovieListFilter} />
       <div className={styles.moviesListContainer}>
-        {data?.movies.map((movie) => (
-          <MovieCard {...movie} key={movie.id} />
+        {data?.movies.map((movie, index) => (
+          <MovieCard {...movie} key={`movie-${movie.id}-${index}`} />
         ))}
       </div>
       <Pagination currentPage={activePage} totalPages={totalPages} onNextClick={handleNextClick} onPageClick={handlePageClick} onPrevClick={handlePrevClick} />
