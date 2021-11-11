@@ -9,8 +9,8 @@ import styles from './MoviePage.module.css';
 const formatToUsd = (number?: number): string | 0 | undefined => number && Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
 
 export const MoviePage = (): JSX.Element => {
-  const params = useParams<{ id: string }>();
-  const { data, isLoading, isFetching } = useQuery('movie', () => getMovie(params.id));
+  const params = useParams<'id'>();
+  const { data, isLoading, isFetching } = useQuery('movie', () => getMovie(params?.id || ''));
 
   if (isLoading || isFetching) {
     <Loader />;

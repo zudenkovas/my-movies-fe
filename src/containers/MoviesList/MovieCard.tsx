@@ -6,7 +6,7 @@ import { RouteKey } from 'containers/MainRouter/routes';
 import styles from './MovieCard.module.css';
 
 const MovieCard = ({ posterPath, releaseDate, title, voteAverage, movieId }: Movie): JSX.Element => {
-  const movieLink = generatePath(RouteKey.Movie, { id: movieId });
+  const movieLink = generatePath(RouteKey.Movie, { id: `${movieId}` });
 
   return (
     <div className={styles.movieCardWrapper}>

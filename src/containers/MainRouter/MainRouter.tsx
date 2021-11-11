@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import MoviesList from 'containers/MoviesList';
 import MoviePage from 'containers/MoviePage';
 import MyMoviesList from 'containers/MyMoviesList';
@@ -6,10 +6,10 @@ import MyMoviesList from 'containers/MyMoviesList';
 import { RouteKey } from '.';
 
 export const MainRouter = (): JSX.Element => (
-  <Switch>
-    <Route component={MyMoviesList} path={RouteKey.MyMovies} />
-    <Route component={MoviePage} path={RouteKey.Movie} />
-    <Route component={MoviesList} path={RouteKey.Movies} />
-    <Route component={MoviesList} path={RouteKey.Index} />
-  </Switch>
+  <Routes>
+    <Route element={<MyMoviesList />} path={RouteKey.MyMovies} />
+    <Route element={<MoviePage />} path={RouteKey.Movie} />
+    <Route element={<MoviesList />} path={RouteKey.Movies} />
+    <Route element={<MoviesList />} path={RouteKey.Index} />
+  </Routes>
 );
