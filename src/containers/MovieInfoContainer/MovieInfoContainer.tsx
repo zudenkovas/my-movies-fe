@@ -4,11 +4,11 @@ import { getMovie } from 'api/movies/moviesLib';
 import Loader from 'components/Loader';
 import Tag from 'components/Tag';
 
-import styles from './MoviePage.module.css';
+import styles from './MovieInfoContainer.module.css';
 
 const formatToUsd = (number?: number): string | 0 | undefined => number && Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
 
-export const MoviePage = (): JSX.Element => {
+const MovieInfoContainer = (): JSX.Element => {
   const params = useParams<'id'>();
   const { data, isLoading, isFetching } = useQuery('movie', () => getMovie(params?.id || ''));
 
@@ -90,3 +90,5 @@ export const MoviePage = (): JSX.Element => {
     </div>
   );
 };
+
+export default MovieInfoContainer;

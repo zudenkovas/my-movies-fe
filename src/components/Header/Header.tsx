@@ -3,7 +3,7 @@ import { NavLink, generatePath, useLocation } from 'react-router-dom';
 import LogoIcon from 'components/Icons/LogoIcon';
 import HamburgerButton from 'components/HamburgerButton';
 import Sidebar from 'components/Sidebar';
-import { RouteKey } from 'containers/MainRouter';
+import { RouteKey } from 'navigation';
 import useMediaQuery from 'hooks/useMediaQuery';
 
 import { HeaderNavigation } from './HeaderNavigation';

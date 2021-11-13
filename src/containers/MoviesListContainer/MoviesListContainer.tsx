@@ -5,7 +5,7 @@ import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
 
 import MovieCard from './MovieCard';
-import styles from './MoviesList.module.css';
+import styles from './MoviesListContainer.module.css';
 import MovieListFilter, { MovieListFilterFormValues } from './MovieListFilter';
 
 const MoviesListContainer = (): JSX.Element => {

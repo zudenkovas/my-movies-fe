@@ -1,7 +1,7 @@
 import { Link, generatePath } from 'react-router-dom';
 import { Movie } from 'api/movies/types';
 import { StarIcon } from 'components/Icons';
-import { RouteKey } from 'containers/MainRouter/routes';
+import { RouteKey } from 'navigation';
 
 import styles from './MovieCard.module.css';
 
