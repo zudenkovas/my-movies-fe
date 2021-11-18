@@ -1,5 +1,5 @@
 import { Link, generatePath } from 'react-router-dom';
-import { Movie } from 'api/movies/types';
+import { Movie } from 'api/movies';
 import { StarIcon } from 'components/Icons';
 import { RouteKey } from 'navigation';
 

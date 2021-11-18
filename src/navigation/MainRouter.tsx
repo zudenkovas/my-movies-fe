@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import MoviesListContainer from 'containers/MoviesListContainer';
 import MovieInfoContainer from 'containers/MovieInfoContainer';
-import MyMoviesList from 'containers/MyMoviesList';
+import MyMoviesList from 'containers/MyMoviesListContainer';
 
 import { RouteKey } from '.';
 

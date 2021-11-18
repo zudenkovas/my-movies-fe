@@ -1,8 +1,8 @@
 import { InputHTMLAttributes } from 'react';
 import { Field } from 'formik';
 
-import TextInputFieldStateless from './TextInputFieldStateless';
+import TextInputFieldAdapter from './TextInputFieldAdapter';
 
-const TextInputField = (props: InputHTMLAttributes<HTMLInputElement>): JSX.Element => <Field {...props} component={TextInputFieldStateless} />;
+const TextInputField = (props: InputHTMLAttributes<HTMLInputElement>): JSX.Element => <Field {...props} component={TextInputFieldAdapter} />;
 
 export default TextInputField;
