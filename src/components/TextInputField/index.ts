@@ -1,2 +1,2 @@
 export { default } from './TextInputField';
-export { default as TextInputFieldStateless } from './TextInputFieldStateless';
+export { default as TextInputFieldAdapter } from './TextInputFieldAdapter';

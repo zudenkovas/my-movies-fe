@@ -56,5 +56,7 @@ type SpokenLanguage = {
 };
 
 export type MovieFilter = {
-  title: string;
+  title?: string;
+  genres?: string;
+  sort?: string;
 };

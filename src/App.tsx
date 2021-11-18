@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Layout from 'components/Layout';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import MainRouter from 'containers/MainRouter';
+import MainRouter from 'navigation';
 
 function App(): JSX.Element {
   return (
