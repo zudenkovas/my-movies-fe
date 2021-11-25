@@ -3,5 +3,5 @@ export const RouteKey = {
   SignIn: '/sign-in',
   Movies: '/movies',
   Movie: '/movies/:id',
-  MyMovies: '/mymovies',
+  MyMovies: '/my-movies',
 };

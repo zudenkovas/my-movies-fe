@@ -10,7 +10,10 @@ import { Auth } from './Auth';
 import { HeaderNavigation } from './HeaderNavigation';
 import styles from './Header.module.css';
 
-const navigationConfig = [{ to: generatePath(RouteKey.Movies), name: 'Movies' }];
+const navigationConfig = [
+  { to: generatePath(RouteKey.Movies), name: 'Movies', private: false },
+  { to: generatePath(RouteKey.MyMovies), name: 'My Movies', private: true },
+];
 
 const Header = (): JSX.Element => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
