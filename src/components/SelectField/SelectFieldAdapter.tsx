@@ -1,8 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { FieldProps } from 'formik';
-import { OnChangeValue } from 'react-select';
 
-import SelectFieldStateless, { SelectFieldStatelessProps, Option, SelectRefValue } from './SelectFieldStateless';
+import SelectFieldStateless, { SelectFieldStatelessProps, SelectRefValue } from './SelectFieldStateless';
 
 const SelectFieldAdapter = ({ className, id, isClearable = false, field, form, options, ...rest }: SelectFieldStatelessProps & FieldProps): JSX.Element => {
   const selectRef = useRef<SelectRefValue>(null);
@@ -16,12 +15,8 @@ const SelectFieldAdapter = ({ className, id, isClearable = false, field, form, o
     }
   }, [value]);
 
-  const handleChange = (selectValue: OnChangeValue<Option, boolean>) => {
-    if (selectValue && 'value' in selectValue) {
-      setFieldValue(name, selectValue.value);
-    } else {
-      setFieldValue(name, '');
-    }
+  const handleChange = (selectValue: string | string[]) => {
+    setFieldValue(name, selectValue);
   };
 
   return (

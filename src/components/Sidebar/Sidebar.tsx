@@ -13,7 +13,7 @@ const Sidebar = ({ children, onBackDropClick }: SidebarProps): JSX.Element => {
   };
 
   return (
-    <div className={styles.takeOverSidebarWrapper} onClick={onBackDropClick}>
+    <div className={styles.backdrop} onClick={onBackDropClick}>
       <div className={styles.takeOverSidebar} onClick={onSidebarClick}>
         {children}
       </div>

@@ -1,10 +1,14 @@
-import { InputHTMLAttributes } from 'react';
 import { FieldProps } from 'formik';
 
-import styles from './TextInputField.module.css';
+import TextInputFieldStateless, { TextInputFieldStatelessProps } from './TextInputFieldStateless';
 
-const TextInputFieldAdapter = (props: InputHTMLAttributes<HTMLInputElement> & FieldProps): JSX.Element => {
+const TextInputFieldAdapter = (props: TextInputFieldStatelessProps & FieldProps): JSX.Element => {
   const { field, form, value, ...rest } = props;
-  return <input className={styles.textInputField} type="text" value={field.value} onBlur={field.onBlur} onChange={field.onChange} {...rest} />;
+  const touched = form.touched?.[field.name] as boolean;
+  const fieldError = form.errors?.[field.name] as string;
+
+  const error = touched && fieldError ? fieldError : undefined;
+
+  return <TextInputFieldStateless error={error} value={field.value} onBlur={field.onBlur} onChange={field.onChange} {...rest} />;
 };
 export default TextInputFieldAdapter;

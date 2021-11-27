@@ -3,3 +3,22 @@
     border-radius: 3px;
     padding: 10px 15px;
 }
+
+
+.textInputFieldLabel {
+    color: var(--darkGrey);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.fieldWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.fieldError {
+    color: var(--red);
+    font-size: 12px;
+    margin-top: 5px;
+}

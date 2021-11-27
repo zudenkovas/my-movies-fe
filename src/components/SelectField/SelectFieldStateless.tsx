@@ -1,17 +1,18 @@
 import { forwardRef } from 'react';
-import Select, { Props, ActionMeta, OnChangeValue, GroupBase, SelectInstance } from 'react-select';
+import Select, { Props, OnChangeValue, GroupBase, SelectInstance } from 'react-select';
 
 import styles from './SelectFieldStateless.module.css';
 
-export type Option = { label: string; value: string | number };
+export type Option = { label: string; value: string };
 export type OptionGroup = GroupBase<Option>;
 
-export type SelectFieldStatelessProps = Omit<Props<Option, boolean>, 'options'> & {
+export type SelectFieldStatelessProps = Omit<Props<Option, boolean>, 'options' | 'onChange'> & {
   className?: string;
   id: string;
   isClearable?: boolean;
   name: string;
   options: Option[];
+  onChange?: (value: string | string[]) => void;
 };
 
 export type SelectRefValue = SelectInstance<Option, boolean>;
@@ -21,8 +22,14 @@ const SelectFieldStateless = forwardRef(
     { className, id, name, isClearable = false, isMulti = false, options, onChange, ...rest }: SelectFieldStatelessProps,
     ref: React.Ref<SelectRefValue>,
   ): JSX.Element => {
-    const handleChange = (option: OnChangeValue<Option, boolean>, actionMeta: ActionMeta<Option>) => {
-      onChange?.(option, actionMeta);
+    const handleChange = (value: OnChangeValue<Option, typeof isMulti>) => {
+      if (isMulti && Array.isArray(value)) {
+        onChange?.(value.map((option) => option.value));
+      }
+
+      if (!isMulti && value && 'value' in value) {
+        onChange?.(value.value);
+      }
     };
 
     return (

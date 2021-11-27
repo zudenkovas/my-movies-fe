@@ -13,7 +13,7 @@ import MoviesListFilter, { MovieListFilterFormValues } from './MoviesListFilter'
 const MoviesListContainer = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activePage = parseInt(searchParams.get('page') || '1');
-  const movieFilter = { title: searchParams.get('title') || '', genres: searchParams.get('genres') || '', sort: searchParams.get('sort') || '' };
+  const movieFilter = { title: searchParams.get('title') || '', genres: searchParams.getAll('genres') || [], sort: searchParams.get('sort') || '' };
 
   const { data, isLoading, isFetching } = useQuery(['movies', activePage, movieFilter], () => getMovies(activePage, movieFilter));
   const { data: genres } = useQuery(['genres'], getGenres);

@@ -15,7 +15,7 @@ type MovieListFilterProps = {
 
 export type MovieListFilterFormValues = {
   title: string;
-  genres: string;
+  genres: string[];
   sort: string;
 };
 
@@ -27,7 +27,7 @@ const MoviesListFilter = ({ onFilterSubmit, onFilterReset, initialValues, genreO
           <>
             <Form className={styles.form}>
               <TextInputField id="title" name="title" placeholder="Enter movie title" />
-              <SelectField className={styles.selectField} id="genres" name="genres" options={genreOptions} placeholder="Select genre" />
+              <SelectField className={styles.selectField} id="genres" name="genres" options={genreOptions} placeholder="Select genre" isMulti />
               <SelectField className={styles.selectField} id="sort" name="sort" options={sortOptions} placeholder="Select sorting" />
               <Button type="submit">Submit</Button>
               <Button onClick={resetForm}>Reset</Button>

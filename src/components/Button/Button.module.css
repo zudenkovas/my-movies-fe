@@ -12,3 +12,17 @@
 .button:hover {
 	filter: brightness(90%);
 }
+
+.button:focus {
+	outline: 2px solid -webkit-focus-ring-color;
+}
+
+.linkButton {
+	background: transparent;
+	color: var(--black);
+	padding: 0;
+}
+
+.linkButton:hover {
+	text-decoration: 2px underline var(--secondary);
+}

@@ -16,11 +16,14 @@ code {
 
 :root {
   /* Colors */
+  --backdrop: rgba(192,192,192, 0.9);
   --secondary: #61dafb;
   --grey: #c7c7c7;
+  --darkGrey: #8c8c8c;
   --white: #fff;
   --black: #000000;
   --ripeLemon: #f5c518;
+  --red: #ff0000;
 
   --paper: 	#fafafa;
 

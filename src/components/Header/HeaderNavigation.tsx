@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { parseMultipleClassNames } from 'utils/theme/styleUtils';
+import { LoginModal } from 'components/Modal';
 
 import styles from './HeaderNavigation.module.css';
 
@@ -24,6 +25,9 @@ export const HeaderNavigation = ({ navigationConfig, listDirection }: HeaderNavi
             </NavLink>
           </li>
         ))}
+        <li className={styles.listItem}>
+          <LoginModal />
+        </li>
       </ul>
     </nav>
   ) : null;
