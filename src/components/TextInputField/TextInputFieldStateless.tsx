@@ -7,7 +7,7 @@ export type TextInputFieldStatelessProps = InputHTMLAttributes<HTMLInputElement>
   error?: string;
 };
 
-const TextInputFieldStateless = ({ error, value, onBlur, onChange, label, ...rest }: TextInputFieldStatelessProps): JSX.Element => {
+const TextInputFieldStateless = ({ error, value, onBlur, onChange, label, type = 'text', ...rest }: TextInputFieldStatelessProps): JSX.Element => {
   return (
     <div className={styles.fieldWrapper}>
       {label && (
@@ -15,7 +15,7 @@ const TextInputFieldStateless = ({ error, value, onBlur, onChange, label, ...res
           {label}
         </label>
       )}
-      <input className={styles.textInputField} type="text" value={value} onBlur={onBlur} onChange={onChange} {...rest} />
+      <input className={styles.textInputField} type={type} value={value} onBlur={onBlur} onChange={onChange} {...rest} />
       {error && <span className={styles.fieldError}>{error}</span>}
     </div>
   );

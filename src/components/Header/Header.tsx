@@ -6,7 +6,6 @@ import Sidebar from 'components/Sidebar';
 import { RouteKey } from 'navigation';
 import useMediaQuery from 'hooks/useMediaQuery';
 
-import { Auth } from './Auth';
 import { HeaderNavigation } from './HeaderNavigation';
 import styles from './Header.module.css';
 
@@ -48,7 +47,6 @@ const Header = (): JSX.Element => {
       {matches ? (
         <div className={styles.navigation}>
           <HeaderNavigation listDirection="row" navigationConfig={navigationConfig} />
-          <Auth />
         </div>
       ) : (
         <>
@@ -57,10 +55,7 @@ const Header = (): JSX.Element => {
           </div>
           {sidebarVisible && (
             <Sidebar onBackDropClick={closeSidebar}>
-              <>
-                <HeaderNavigation listDirection="column" navigationConfig={navigationConfig} />
-                <Auth />
-              </>
+              <HeaderNavigation listDirection="column" navigationConfig={navigationConfig} />
             </Sidebar>
           )}
         </>

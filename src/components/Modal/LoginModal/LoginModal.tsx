@@ -1,13 +1,34 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import { FormikProps } from 'formik';
+import { Credentials, logIn } from 'api/auth';
 import Modal from 'components/Modal';
 import Button, { styles as buttonStyles } from 'components/Button';
+import Loader from 'components/Loader';
+import { useProfile } from 'providers/ProfileProvider';
 
 import LoginForm, { LoginFormValues } from './LoginForm';
 
 const LoginModal = (): JSX.Element => {
   const [modalVisible, setModalVisible] = useState(false);
+  const { data, isLoading, isSuccess, mutate } = useMutation((credentials: Credentials) => logIn(credentials));
+  const { isLoggedIn, signIn, signOut } = useProfile();
+  const navigate = useNavigate();
   const formRef = useRef<FormikProps<LoginFormValues>>(null);
+
+  useEffect(() => {
+    if (data && data.token) {
+      signIn(data.token);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setModalVisible(false);
+      navigate('/my-movies');
+    }
+  }, [isSuccess]);
 
   const handleOpen = () => {
     setModalVisible(true);
@@ -17,8 +38,10 @@ const LoginModal = (): JSX.Element => {
     setModalVisible(false);
   };
 
-  const handleSubmit = (values: LoginFormValues) => {
-    console.log(values);
+  const handleSubmit = (values: Credentials) => {
+    if (values.email && values.password) {
+      mutate(values);
+    }
   };
 
   const submitForm = () => {
@@ -27,10 +50,11 @@ const LoginModal = (): JSX.Element => {
 
   return (
     <>
-      <Button className={buttonStyles.linkButton} onClick={handleOpen}>
-        Login
+      <Button className={buttonStyles.linkButton} onClick={isLoggedIn ? signOut : handleOpen}>
+        {isLoggedIn ? 'Sign out' : 'Sign in'}
       </Button>
       <Modal confirmText="Login" handleClose={handleClose} handleConfirm={submitForm} headerText="Please login" isOpen={modalVisible}>
+        {isLoading && <Loader />}
         <LoginForm ref={formRef} onSubmit={handleSubmit} />
       </Modal>
     </>

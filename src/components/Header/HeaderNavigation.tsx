@@ -1,4 +1,4 @@
-import { useProfile } from 'prividers/ProfileProvider';
+import { useProfile } from 'providers/ProfileProvider';
 import { NavLink } from 'react-router-dom';
 import { parseMultipleClassNames } from 'utils/theme/styleUtils';
 import { LoginModal } from 'components/Modal';
@@ -23,7 +23,7 @@ export const HeaderNavigation = ({ navigationConfig, listDirection }: HeaderNavi
 
   return navigationConfig.length ? (
     <nav>
-      <ul className={listDirection === 'row' ? parseMultipleClassNames([styles.unorderedList, styles.rowAlign]) : styles.unorderedList}>
+      <ul className={listDirection === 'column' ? parseMultipleClassNames([styles.unorderedList, styles.columnAlign]) : styles.unorderedList}>
         {menuItems.map((navItem, index) => (
           <li className={styles.listItem} key={index}>
             <NavLink className={({ isActive }) => (isActive ? parseMultipleClassNames([styles.navLink, styles.isActive]) : styles.navLink)} to={navItem.to}>

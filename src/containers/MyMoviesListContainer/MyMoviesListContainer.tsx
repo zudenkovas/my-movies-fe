@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router';
-import { useProfile } from 'prividers/ProfileProvider';
+import { useProfile } from 'providers/ProfileProvider';
 
 export const MyMoviesListContainer = (): JSX.Element => {
   const { isLoggedIn } = useProfile();

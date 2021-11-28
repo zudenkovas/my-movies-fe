@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import Button from 'components/Button';
 import { RouteKey } from 'navigation';
-import { useProfile } from 'prividers/ProfileProvider';
+import { useProfile } from 'providers/ProfileProvider';
 
 import styles from './Auth.module.css';
 
