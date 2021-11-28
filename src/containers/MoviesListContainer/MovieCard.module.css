@@ -38,8 +38,8 @@
 .releaseDate {
     align-items: center;
     display: flex;
-    justify-content: space-between;
     font-weight: bold;
+    justify-content: space-between;
 }
 
 .filmTitle {
