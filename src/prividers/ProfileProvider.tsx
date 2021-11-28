@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { TOKEN_KEY } from 'api/shared/constants';
 
 type ProfileProviderProps = {
   children: ReactNode;
@@ -24,12 +25,25 @@ const ProfileProvider = ({ children }: ProfileProviderProps): JSX.Element => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [, setToken] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      return;
+    }
+
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (token) {
+      signIn(token);
+    }
+  }, []);
+
   const signIn = (token: string): void => {
+    localStorage.setItem(TOKEN_KEY, token);
     setToken(token);
     setIsLoggedIn(true);
   };
 
   const signOut = (): void => {
+    localStorage.removeItem(TOKEN_KEY);
     setIsLoggedIn(false);
     setToken(null);
   };
