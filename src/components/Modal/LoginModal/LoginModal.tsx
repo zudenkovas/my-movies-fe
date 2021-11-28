@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { FormikProps } from 'formik';
 import { Credentials, logIn } from 'api/auth';
 import Modal from 'components/Modal';
-import Button, { styles as buttonStyles } from 'components/Button';
+import Button from 'components/Button';
 import Loader from 'components/Loader';
 import { useProfile } from 'providers/ProfileProvider';
 
 import LoginForm, { LoginFormValues } from './LoginForm';
+import styles from './LoginModal.module.css';
 
 const LoginModal = (): JSX.Element => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -50,7 +51,7 @@ const LoginModal = (): JSX.Element => {
 
   return (
     <>
-      <Button className={buttonStyles.linkButton} onClick={isLoggedIn ? signOut : handleOpen}>
+      <Button className={styles.linkButton} onClick={isLoggedIn ? signOut : handleOpen}>
         {isLoggedIn ? 'Sign out' : 'Sign in'}
       </Button>
       <Modal confirmText="Login" handleClose={handleClose} handleConfirm={submitForm} headerText="Please login" isOpen={modalVisible}>

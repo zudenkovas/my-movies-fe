@@ -23,7 +23,9 @@ const Modal = ({ handleClose, handleConfirm, headerText, children, confirmText =
         <div className={styles.modalHeader}>{headerText}</div>
         <div className={styles.modalContent}>{children}</div>
         <div className={styles.modalFooter}>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button className={styles.linkButton} onClick={handleClose}>
+            Cancel
+          </Button>
           <Button onClick={handleConfirm}>{confirmText}</Button>
         </div>
       </div>

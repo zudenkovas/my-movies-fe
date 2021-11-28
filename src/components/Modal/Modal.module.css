@@ -13,15 +13,14 @@
 
 .modal {
     background-color:var(--white);
-    border: 1ps solid var(--grey);
+    border: 1px solid var(--grey);
     border-radius: 3px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15px;
     min-height: 300px;
     min-width: 300px;
-
+    padding: 15px;
 }
 
 .modalHeader {
@@ -40,4 +39,16 @@
 
 .modalContent {
     position: relative;
+}
+
+.linkButton {
+	background: transparent;
+	color: var(--black);
+	padding: 0;
+}
+
+.linkButton:hover {
+	border-radius: 0;
+	text-decoration: 2px underline var(--secondary);
+	text-underline-offset: 2px;
 }

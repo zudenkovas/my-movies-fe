@@ -1,0 +1,11 @@
+.linkButton {
+	background: transparent;
+	color: var(--black);
+	padding: 0;
+}
+
+.linkButton:hover {
+	border-radius: 0;
+	text-decoration: 2px underline var(--secondary);
+	text-underline-offset: 2px;
+}
