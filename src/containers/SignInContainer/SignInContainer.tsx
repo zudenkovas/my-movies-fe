@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import Button from 'components/Button';
 import TextInputField from 'components/TextInputField';
 import { Credentials, logIn } from 'api/auth';
-import { useProfile } from 'prividers/ProfileProvider';
+import { useProfile } from 'providers/ProfileProvider';
 
 import styles from './SignIn.module.css';
 

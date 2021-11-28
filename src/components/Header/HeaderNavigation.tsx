@@ -1,4 +1,4 @@
-import { useProfile } from 'prividers/ProfileProvider';
+import { useProfile } from 'providers/ProfileProvider';
 import { NavLink } from 'react-router-dom';
 import { parseMultipleClassNames } from 'utils/theme/styleUtils';
 

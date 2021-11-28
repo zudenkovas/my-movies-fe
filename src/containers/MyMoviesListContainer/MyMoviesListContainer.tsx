@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router';
 import { useQuery } from 'react-query';
-import { useProfile } from 'prividers/ProfileProvider';
+import { useProfile } from 'providers/ProfileProvider';
 import Loader from 'components/Loader';
 import MovieCard from 'containers/MoviesListContainer/MovieCard';
 import { getPersonalMovies } from 'api/personalMovies/personalMoviesLib';
