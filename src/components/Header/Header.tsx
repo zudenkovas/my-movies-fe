@@ -6,10 +6,14 @@ import Sidebar from 'components/Sidebar';
 import { RouteKey } from 'navigation';
 import useMediaQuery from 'hooks/useMediaQuery';
 
+import { Auth } from './Auth';
 import { HeaderNavigation } from './HeaderNavigation';
 import styles from './Header.module.css';
 
-const navigationConfig = [{ to: generatePath(RouteKey.Movies), name: 'Movies' }];
+const navigationConfig = [
+  { to: generatePath(RouteKey.Movies), name: 'Movies', private: false },
+  { to: generatePath(RouteKey.MyMovies), name: 'My Movies', private: true },
+];
 
 const Header = (): JSX.Element => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -42,7 +46,10 @@ const Header = (): JSX.Element => {
         <LogoIcon />
       </NavLink>
       {matches ? (
-        <HeaderNavigation listDirection="row" navigationConfig={navigationConfig} />
+        <div className={styles.navigation}>
+          <HeaderNavigation listDirection="row" navigationConfig={navigationConfig} />
+          <Auth />
+        </div>
       ) : (
         <>
           <div className={styles.hamburgerButtonWrapper}>
@@ -50,7 +57,10 @@ const Header = (): JSX.Element => {
           </div>
           {sidebarVisible && (
             <Sidebar onBackDropClick={closeSidebar}>
-              <HeaderNavigation listDirection="column" navigationConfig={navigationConfig} />
+              <>
+                <HeaderNavigation listDirection="column" navigationConfig={navigationConfig} />
+                <Auth />
+              </>
             </Sidebar>
           )}
         </>
