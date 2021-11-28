@@ -1,4 +1,4 @@
-import { HearthPlus } from 'components/Icons';
+import { HearthPlus, HeartMinus } from 'components/Icons';
 
 import styles from './Favorite.module.css';
 
@@ -7,10 +7,10 @@ type FavoriteProps = {
   onClick: () => void;
 };
 
-const Favorite = ({ onClick }: FavoriteProps): JSX.Element => {
+const Favorite = ({ id, onClick }: FavoriteProps): JSX.Element => {
   return (
     <span className={styles.container} onClick={onClick}>
-      <HearthPlus />
+      {id ? <HeartMinus /> : <HearthPlus />}
     </span>
   );
 };

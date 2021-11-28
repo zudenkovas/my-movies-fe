@@ -15,7 +15,7 @@ const MoviesListContainer = (): JSX.Element => {
   const activePage = parseInt(searchParams.get('page') || '1');
   const movieFilter = { title: searchParams.get('title') || '', genres: searchParams.getAll('genres') || [], sort: searchParams.get('sort') || '' };
 
-  const { data, isLoading, isFetching } = useQuery(['movies', activePage, movieFilter], () => getMovies(activePage, movieFilter));
+  const { data, isLoading, isFetching, refetch } = useQuery(['movies', activePage, movieFilter], () => getMovies(activePage, movieFilter));
   const { data: genres } = useQuery(['genres'], getGenres);
   const { data: sortOptions } = useQuery(['sortOptions'], getSortOptions);
 
@@ -47,6 +47,10 @@ const MoviesListContainer = (): JSX.Element => {
     setSearchParams({ page: `${activePage}` });
   };
 
+  const handleMovieRefetch = () => {
+    refetch();
+  };
+
   return (
     <>
       <MoviesListFilter
@@ -57,7 +61,11 @@ const MoviesListContainer = (): JSX.Element => {
         onFilterSubmit={handleMovieListFilter}
       />
       <div className={styles.moviesListContainer}>
-        {isLoading || isFetching ? <Loader /> : data?.movies.map((movie, index) => <MovieCard key={`movie-${movie._id}-${index}`} movie={movie} />)}
+        {isLoading || isFetching ? (
+          <Loader />
+        ) : (
+          data?.movies.map((movie, index) => <MovieCard key={`movie-${movie._id}-${index}`} movie={movie} onFavoriteClick={handleMovieRefetch} />)
+        )}
       </div>
       <Pagination currentPage={activePage} totalPages={totalPages} onNextClick={handleNextClick} onPageClick={handlePageClick} onPrevClick={handlePrevClick} />
     </>
