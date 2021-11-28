@@ -13,7 +13,7 @@ export const MyMoviesListContainer = (): JSX.Element => {
 
   return isLoggedIn ? (
     <div className={styles.moviesListContainer}>
-      {isLoading || isFetching ? <Loader /> : data?.movies.map((movie, index) => <MovieCard {...movie} key={`movie-${movie.id}-${index}`} />)}
+      {isLoading || isFetching ? <Loader /> : data?.movies.map((movie, index) => <MovieCard key={`movie-${movie._id}-${index}`} movie={movie} />)}
     </div>
   ) : (
     <Navigate to="/" />

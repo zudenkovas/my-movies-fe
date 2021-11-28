@@ -5,7 +5,7 @@ export type MoviesResponse = {
 };
 
 export type Movie = {
-  id?: string;
+  _id?: string;
   movieId: number;
   backdropPath: string;
   posterPath: string;

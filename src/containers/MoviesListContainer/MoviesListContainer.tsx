@@ -57,7 +57,7 @@ const MoviesListContainer = (): JSX.Element => {
         onFilterSubmit={handleMovieListFilter}
       />
       <div className={styles.moviesListContainer}>
-        {isLoading || isFetching ? <Loader /> : data?.movies.map((movie, index) => <MovieCard {...movie} key={`movie-${movie.id}-${index}`} />)}
+        {isLoading || isFetching ? <Loader /> : data?.movies.map((movie, index) => <MovieCard key={`movie-${movie._id}-${index}`} movie={movie} />)}
       </div>
       <Pagination currentPage={activePage} totalPages={totalPages} onNextClick={handleNextClick} onPageClick={handlePageClick} onPrevClick={handlePrevClick} />
     </>
