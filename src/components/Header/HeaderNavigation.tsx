@@ -1,3 +1,4 @@
+import { useProfile } from 'prividers/ProfileProvider';
 import { NavLink } from 'react-router-dom';
 import { parseMultipleClassNames } from 'utils/theme/styleUtils';
 import { LoginModal } from 'components/Modal';
@@ -12,13 +13,18 @@ type HeaderNavigationProps = {
 type NavigationConfig = {
   to: string;
   name: string;
+  private: boolean;
 };
 
-export const HeaderNavigation = ({ navigationConfig, listDirection }: HeaderNavigationProps): JSX.Element | null =>
-  navigationConfig.length ? (
+export const HeaderNavigation = ({ navigationConfig, listDirection }: HeaderNavigationProps): JSX.Element | null => {
+  const { isLoggedIn } = useProfile();
+
+  const menuItems = isLoggedIn ? navigationConfig : navigationConfig.filter((i) => !i.private);
+
+  return navigationConfig.length ? (
     <nav>
       <ul className={listDirection === 'row' ? parseMultipleClassNames([styles.unorderedList, styles.rowAlign]) : styles.unorderedList}>
-        {navigationConfig.map((navItem, index) => (
+        {menuItems.map((navItem, index) => (
           <li className={styles.listItem} key={index}>
             <NavLink className={({ isActive }) => (isActive ? parseMultipleClassNames([styles.navLink, styles.isActive]) : styles.navLink)} to={navItem.to}>
               {navItem.name}
@@ -31,3 +37,4 @@ export const HeaderNavigation = ({ navigationConfig, listDirection }: HeaderNavi
       </ul>
     </nav>
   ) : null;
+};
