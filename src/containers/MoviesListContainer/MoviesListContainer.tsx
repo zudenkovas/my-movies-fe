@@ -10,14 +10,22 @@ import MovieCard from './MovieCard';
 import styles from './MoviesListContainer.module.css';
 import MoviesListFilter, { MovieListFilterFormValues } from './MoviesListFilter';
 
+const filterParams = (params: MovieListFilterFormValues & { page: string }) =>
+  Object.entries(params).reduce((acc: Record<string, string | string[]>, [key, value]: [string, string | string[]]) => {
+    if (value) {
+      acc[key] = value;
+    }
+    return acc;
+  }, {});
+
 const MoviesListContainer = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activePage = parseInt(searchParams.get('page') || '1');
   const movieFilter = { title: searchParams.get('title') || '', genres: searchParams.getAll('genres') || [], sort: searchParams.get('sort') || '' };
 
   const { data, isLoading, isFetching, refetch } = useQuery(['movies', activePage, movieFilter], () => getMovies(activePage, movieFilter));
-  const { data: genres } = useQuery(['genres'], getGenres);
-  const { data: sortOptions } = useQuery(['sortOptions'], getSortOptions);
+  const { data: genres, isLoading: loadingGenres } = useQuery(['genres'], getGenres);
+  const { data: sortOptions, isLoading: loadingSortOptions } = useQuery(['sortOptions'], getSortOptions);
 
   const genreOptions = genres?.map((genre) => ({ label: genre.name, value: `${genre.id}` })) || [];
   const mappedSortOptions = sortOptions?.map((sortOption) => ({ label: sortOption.name, value: sortOption.code })) || [];
@@ -26,21 +34,21 @@ const MoviesListContainer = (): JSX.Element => {
   const handleNextClick = () => {
     const nextPage = activePage === totalPages ? activePage : activePage + 1;
 
-    setSearchParams({ ...movieFilter, page: `${nextPage}` });
+    setSearchParams(filterParams({ ...movieFilter, page: `${nextPage}` }));
   };
 
   const handlePrevClick = () => {
     const nextPage = activePage === 1 ? activePage : activePage - 1;
 
-    setSearchParams({ ...movieFilter, page: `${nextPage}` });
+    setSearchParams(filterParams({ ...movieFilter, page: `${nextPage}` }));
   };
 
   const handlePageClick = (page: number) => {
-    setSearchParams({ ...movieFilter, page: `${page}` });
+    setSearchParams(filterParams({ ...movieFilter, page: `${page}` }));
   };
 
   const handleMovieListFilter = (values: MovieListFilterFormValues) => {
-    setSearchParams({ ...values, page: '1' });
+    setSearchParams(filterParams({ ...values, page: '1' }));
   };
 
   const handleMovieListFilterReset = () => {
@@ -61,7 +69,7 @@ const MoviesListContainer = (): JSX.Element => {
         onFilterSubmit={handleMovieListFilter}
       />
       <div className={styles.moviesListContainer}>
-        {isLoading || isFetching ? (
+        {isLoading || isFetching || loadingGenres || loadingSortOptions ? (
           <Loader />
         ) : (
           data?.movies.map((movie, index) => <MovieCard key={`movie-${movie._id}-${index}`} movie={movie} onFavoriteClick={handleMovieRefetch} />)
