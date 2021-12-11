@@ -29,8 +29,12 @@ const MoviesListFilter = ({ onFilterSubmit, onFilterReset, initialValues, genreO
               <TextInputField id="title" name="title" placeholder="Enter movie title" />
               <SelectField className={styles.selectField} id="genres" name="genres" options={genreOptions} placeholder="Select genre" isMulti />
               <SelectField className={styles.selectField} id="sort" name="sort" options={sortOptions} placeholder="Select sorting" />
-              <Button type="submit">Submit</Button>
-              <Button onClick={resetForm}>Reset</Button>
+              <Button className={styles.button} type="submit">
+                Submit
+              </Button>
+              <Button className={styles.button} onClick={resetForm}>
+                Reset
+              </Button>
             </Form>
           </>
         );

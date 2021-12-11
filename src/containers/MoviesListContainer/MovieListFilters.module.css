@@ -8,3 +8,7 @@
 .selectField {
     min-width: 150px
 }
+
+.button {
+    max-height: 38px;
+}
