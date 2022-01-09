@@ -75,7 +75,7 @@ const LoginModal = (): JSX.Element => {
   return (
     <>
       <Button className={styles.linkButton} onClick={isLoggedIn ? signOut : handleOpen}>
-        {isLoggedIn ? 'Sign out' : 'Sign in'}
+        {isLoggedIn ? 'Sign out' : 'Sign in/up'}
       </Button>
       <Modal
         confirmText={isSignInForm ? 'Login' : 'Sign-up'}

@@ -4,8 +4,10 @@ import { useProfile } from 'providers/ProfileProvider';
 import Loader from 'components/Loader';
 import MovieCard from 'containers/MoviesListContainer/MovieCard';
 import { getPersonalMovies } from 'api/personalMovies/personalMoviesLib';
+import { parseMultipleClassNames } from 'utils/theme/styleUtils';
 
-import styles from '../MoviesListContainer/MoviesListContainer.module.css';
+import moviesListContainerStyles from '../MoviesListContainer/MoviesListContainer.module.css';
+import styles from './MyMoviesListContainer.module.css';
 
 export const MyMoviesListContainer = (): JSX.Element => {
   const { isLoggedIn } = useProfile();
@@ -16,7 +18,7 @@ export const MyMoviesListContainer = (): JSX.Element => {
   };
 
   return isLoggedIn ? (
-    <div className={styles.moviesListContainer}>
+    <div className={parseMultipleClassNames([moviesListContainerStyles.moviesListContainer, styles.myMoviesListContainer])}>
       {isLoading || isFetching ? (
         <Loader />
       ) : (

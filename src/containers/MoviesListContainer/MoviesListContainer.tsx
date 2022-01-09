@@ -1,10 +1,12 @@
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { getMovies } from 'api/movies';
+import { getPersonalMovies } from 'api/personalMovies';
 import { getGenres } from 'api/genres';
 import { getSortOptions } from 'api/sortOptions';
 import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
+import { useProfile } from 'providers/ProfileProvider';
 
 import MovieCard from './MovieCard';
 import styles from './MoviesListContainer.module.css';
@@ -19,11 +21,20 @@ const filterParams = (params: MovieListFilterFormValues & { page: string }) =>
   }, {});
 
 const MoviesListContainer = (): JSX.Element => {
+  const { isLoggedIn } = useProfile();
   const [searchParams, setSearchParams] = useSearchParams();
   const activePage = parseInt(searchParams.get('page') || '1');
   const movieFilter = { title: searchParams.get('title') || '', genres: searchParams.getAll('genres') || [], sort: searchParams.get('sort') || '' };
 
   const { data, isLoading, isFetching, refetch } = useQuery(['movies', activePage, movieFilter], () => getMovies(activePage, movieFilter));
+  const {
+    data: personalMovies,
+    isLoading: loadingPersonalMovies,
+    isFetching: fetchingPersonalMovies,
+    refetch: refetchMyMovies,
+  } = useQuery(['personal-movies'], getPersonalMovies, { enabled: isLoggedIn });
+
+  const myMoviesIds = personalMovies?.movies.map((movie) => ({ movieId: movie.movieId, _id: movie._id }));
   const { data: genres, isLoading: loadingGenres } = useQuery(['genres'], getGenres);
   const { data: sortOptions, isLoading: loadingSortOptions } = useQuery(['sortOptions'], getSortOptions);
 
@@ -57,6 +68,7 @@ const MoviesListContainer = (): JSX.Element => {
 
   const handleMovieRefetch = () => {
     refetch();
+    refetchMyMovies();
   };
 
   return (
@@ -68,12 +80,16 @@ const MoviesListContainer = (): JSX.Element => {
         onFilterReset={handleMovieListFilterReset}
         onFilterSubmit={handleMovieListFilter}
       />
-      <div className={styles.moviesListContainer}>
-        {isLoading || isFetching || loadingGenres || loadingSortOptions ? (
-          <Loader />
-        ) : (
-          data?.movies.map((movie, index) => <MovieCard key={`movie-${movie._id}-${index}`} movie={movie} onFavoriteClick={handleMovieRefetch} />)
-        )}
+      <div style={{ marginBottom: 'auto' }}>
+        <div className={styles.moviesListContainer}>
+          {isLoading || isFetching || loadingGenres || loadingSortOptions || loadingPersonalMovies || fetchingPersonalMovies ? (
+            <Loader />
+          ) : (
+            data?.movies.map((movie, index) => (
+              <MovieCard key={`movie-${movie._id}-${index}`} movie={movie} myMoviesIds={myMoviesIds} onFavoriteClick={handleMovieRefetch} />
+            ))
+          )}
+        </div>
       </div>
       <Pagination currentPage={activePage} totalPages={totalPages} onNextClick={handleNextClick} onPageClick={handlePageClick} onPrevClick={handlePrevClick} />
     </>
